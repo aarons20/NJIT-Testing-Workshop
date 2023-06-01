@@ -1,6 +1,9 @@
-class bankAccount:
+from Exceptions import BalanceRetrievealException, InternalDepositException, WithdrawlException
+
+
+class BankAccount:
     """
-    A class used to represent an bank account
+    A class used to represent a bank account
 
     ...
 
@@ -10,7 +13,7 @@ class bankAccount:
         the username of the current person banking
     balance : float
         the amount of money in the bank
-    
+
     Methods
     -------
     transactionOption()
@@ -23,17 +26,21 @@ class bankAccount:
 
     viewBalance()
         Prints the amount stored in the bank account
-    
+
     deposit()
         Add funds to your bank account
-    
+
     withdraw()
         Remove funds from your bank account
     """
     username = "username"
     balance = 100.00
-    
-    def transactionOption(self):
+
+    def __init__(self, username, balance):
+        self.username = username
+        self.balance = balance
+
+    def transaction_options(self):
         try:
             print('\n[1] View Balance')
             print('[2] Deposit')
@@ -42,53 +49,48 @@ class bankAccount:
 
             select = int(input('Select an option: '))
             if select == 1:
-                bal = bankAccount.viewBalance(self)
-                print('\nCurrent Balance: $'+ str(bal))
+                bal = BankAccount.view_balance(self)
+                print('\nCurrent Balance: $' + str(bal))
             elif select == 2:
-                bankAccount.deposit(self)
+                amount = float(input('Enter the deposit amount: '))
+                BankAccount.deposit(self, amount)
                 print('\nDeposit successful!')
             elif select == 3:
-                bankAccount.withdraw(self)
+                amount = float(input('Enter the withdrawal amount: '))
+                BankAccount.withdraw(self, amount)
                 print('\nWithdrawal successful!')
             elif select == 4:
-                bankAccount.leave(self)                
+                BankAccount.leave(self)
             else:
                 print('\nTransaction Error - 405')
-                bankAccount.transactionOption(self)
-            if select > 0 and select < 4:
-                bankAccount.transactionOption(self)
+                BankAccount.transaction_options(self)
+            if 0 < select < 4:
+                BankAccount.transaction_options(self)
         except:
             raise Exception('Transaction Error - 402')
 
     def leave(self):
         print('\nThank You')
-        quit
+        quit()
 
-    def viewBalance(self):
+    def view_balance(self):
         try:
             return self.balance
         except:
-            raise Exception('Balance Retreival Error - 901')
+            raise BalanceRetrievealException
 
-    def deposit(self):
-        amount = float(input('Enter the deposit amount: '))
+    def deposit(self, amount):
         if amount > 0:
-            newbalance = str((float(self.balance)) + amount)
-            self.balance = newbalance
+            new_balance = (float(self.balance)) + amount
+            self.balance = new_balance
             return self.balance
         else:
-            raise Exception('Internal Deposit Error - 212')
+            raise InternalDepositException
 
-    def withdraw(self):
-        amount = float(input('Enter the withdrawal amount: '))
+    def withdraw(self, amount):
         if amount <= float(self.balance):
-            newbalance = str((float(self.balance)) - amount)
-            self.balance = newbalance
+            new_balance = (float(self.balance)) - amount
+            self.balance = new_balance
             return self.balance
         else:
-            raise Exception('Withdrawal Error - 787')
-
-
-
-bank = bankAccount()
-bank.transactionOption()
+            raise WithdrawlException
