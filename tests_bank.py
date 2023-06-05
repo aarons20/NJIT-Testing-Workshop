@@ -1,6 +1,7 @@
 from virtualBankLimited import BankAccount
 from Exceptions import InternalDepositException, WithdrawlException, BalanceRetrievealException
 import pytest
+import coverage
 
 # Runs before every test, creating a BankAccount object with the username 'name' and balance 100.
 @pytest.fixture(autouse=True)
