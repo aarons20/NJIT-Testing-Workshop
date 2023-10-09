@@ -74,8 +74,7 @@ class BankAccount:
         """
         print thank you and then leave the transaction loop (call quit())
         """
-        print('\nThank You, have a nice day!')
-        quit()
+        pass
 
     def view_balance(self):
         """
@@ -110,12 +109,7 @@ class BankAccount:
         InternalDepositException
             when amount is negative or NaN
         """
-        if amount > 0:
-            new_balance = (float(self.balance)) + amount
-            self.balance = new_balance
-            return self.balance
-        else:
-            raise InternalDepositException
+        pass
 
     def withdraw(self, amount):
         # TODO implement function
@@ -138,12 +132,7 @@ class BankAccount:
         WithdrawalException
             When amount is negative, NaN or > the account balance
         """
-        if amount <= float(self.balance):
-            new_balance = (float(self.balance)) - amount
-            self.balance = new_balance
-            return self.balance
-        else:
-            raise WithdrawalException
+        pass
 
 
 if __name__ == '__main__':
