@@ -1,5 +1,5 @@
 from virtualBankLimited import BankAccount
-from Exceptions import InternalDepositException, WithdrawlException, BalanceRetrievealException
+from Exceptions import InternalDepositException, WithdrawalException, BalanceRetrievalException
 import pytest
 import coverage
 
