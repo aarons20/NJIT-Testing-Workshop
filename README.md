@@ -2,7 +2,7 @@
 This repo is intended for demonstrating how unit testing works in a professional setting. We will be using Sonarqube to do our code analysis with our simple python project. You'll be needing to install a few itmes to get started. Although installing Sonarqube is not necessary, this readme will provide simple instructions to install Sonarqube locally.  
 
 ## Installing SonarQube
-###The following instructions will be installing SonarQube locally (PC/Laptop) on Windows. 
+### The following instructions will be installing SonarQube locally (PC/Laptop) on Windows. 
 
 You'll need to install two items for SonarQube, the [SonarQube Platform](https://docs.sonarsource.com/sonarqube/9.9/analyzing-source-code/overview/) and the SonarScanner. Read more about the difference [here](https://stackoverflow.com/questions/43029897/sonarqube-vs-sonarscanner#:~:text=Sonarqube%20provides%20the%20intelligence%20to,organisation%20that%20developed%20SonarQube%20too.)
 
