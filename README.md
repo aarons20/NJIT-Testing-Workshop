@@ -1,5 +1,5 @@
 # NJIT-Testing-Workshop
-This repo is intended for demonstrating how unit testing works in a professional setting. We will be using Sonarqube to do our code analysis with our simple python project. You'll be needing to install a few itmes to get started. Although installing Sonarqube is not necessary, this readme will provide simple instructions to install Sonarqube locally.  
+This repo is intended for demonstrating how unit testing works in a professional setting. We will be using Sonarqube to do our code analysis with our simple python project. You'll be needing to install a few items to get started. Although installing Sonarqube is not necessary, this readme will provide simple instructions to install Sonarqube locally.  
 
 ## Installing SonarQube
 ### The following instructions will be installing SonarQube locally (PC/Laptop) on Windows. 
@@ -20,4 +20,18 @@ java -version
 ```
 Note:  If you have another version of Java installed you can change your environment variables to set version 17  as the default path. 
 
+### Installing PyTest
 
+You'll need to install PyTest by using the command below. This is the testing libraries we will be using for Python. To view examples of how we will use them within this project you can click [here](https://github.com/PeePeePirate/NJIT-Testing-Workshop/blob/main/tests_bank.py)
+
+For more instructions you can visit their site: https://docs.pytest.org/en/7.4.x/getting-started.html
+CMD:
+pip install -U pytest
+
+### Installing Coverage
+
+The final item you'll need to install is [Python Coverage](https://coverage.readthedocs.io/en/7.3.2/). This package will be used to create the report that will be feed into sonarqube to analysis.
+
+For more insturctions you can visit their site: https://coverage.readthedocs.io/en/7.3.2/
+CMD:
+python3 -m pip install coverage
