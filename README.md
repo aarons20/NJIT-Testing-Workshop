@@ -26,6 +26,7 @@ You'll need to install PyTest by using the command below. This is the testing li
 
 For more instructions you can visit their site: https://docs.pytest.org/en/7.4.x/getting-started.html
 
+
 CMD:
 ```
 pip install -U pytest
@@ -36,6 +37,7 @@ pip install -U pytest
 The final item you'll need to install is [Python Coverage](https://coverage.readthedocs.io/en/7.3.2/). This package will be used to create the report that will be feed into sonarqube to analysis.
 
 For more insturctions you can visit their site: https://coverage.readthedocs.io/en/7.3.2/
+
 
 CMD:
 ```
