@@ -26,7 +26,9 @@ You'll need to install PyTest by using the command below. This is the testing li
 
 For more instructions you can visit their site: https://docs.pytest.org/en/7.4.x/getting-started.html
 CMD:
+```
 pip install -U pytest
+```
 
 ### Installing Coverage
 
@@ -34,4 +36,6 @@ The final item you'll need to install is [Python Coverage](https://coverage.read
 
 For more insturctions you can visit their site: https://coverage.readthedocs.io/en/7.3.2/
 CMD:
+```
 python3 -m pip install coverage
+```
