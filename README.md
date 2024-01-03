@@ -43,3 +43,66 @@ CMD:
 ```
 python3 -m pip install coverage
 ```
+
+### Workshop Instructions
+
+#### Test Driven Development (TDD) 
+#### Banking Application
+
+#### Project Overview:​
+
+You are a new software engineer for a small credit union. The Credit Union is looking to modernize and has hired you to help develop software for their ATMs. As it stands, the application is lacking in the required features. 
+
+It is your responsibility to implement the required tests and features needed to create a well-tested and functional application. 
+
+#### Objectives:​ 
+
+- Create In-depth unit tests for all functions of the application. 
+
+- Implement necessary features into the application. 
+
+#### ​​Requirements/Task(s):​ 
+
+1. Clone the GitHub Repository 
+
+2. Switch and work off the NJIT---Testing-Branch 
+
+3. Create your assigned function(s) for the application. 
+
+4. Stage and commit your changes. 
+
+5. Push your changes to the NJIT---Testing-Branch. 
+
+6. ​​Add the link to your project here:​ 
+
+    a. Github Repo: https://github.com/PeePeePirate/NJIT-Testing-Workshop.git 
+
+#### Deposit Function requirements: 
+
+- Input validation tests  
+
+- Letters  
+
+- Characters  
+
+- Bool  
+
+- Account balance in negative  
+
+- Account balance zero  
+
+- Account balance in the positive 
+
+#### Withdraw function requirements: 
+
+- Input validation  
+
+- Letters  
+
+- Characters  
+
+- Bool 
+
+- Withdraw to zero  
+
+- Withdraw to positive or negative 
