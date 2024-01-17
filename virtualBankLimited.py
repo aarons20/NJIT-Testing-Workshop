@@ -1,10 +1,9 @@
-from Exceptions import BalanceRetrievealException, InternalDepositException, WithdrawlException
+from Exceptions import BalanceRetrievalException, InternalDepositException, WithdrawalException
 
 
 class BankAccount:
     """
     A class used to represent a bank account
-
     ...
 
     Attributes
@@ -20,16 +19,12 @@ class BankAccount:
         Asks for input on what the user wants to do,
         based on the option it runs the expected function.
         If anything other than exit, function loops.
-
     leave()
-        Prints thank you and exits the transactionOptions loop.
-
+        Prints thank you and exits the transaction_options loop.
     viewBalance()
-        Prints the amount stored in the bank account
-
+        Returns the amount stored in the bank account
     deposit()
         Add funds to your bank account
-
     withdraw()
         Remove funds from your bank account
     """
@@ -41,56 +36,106 @@ class BankAccount:
         self.balance = balance
 
     def transaction_options(self):
+        print('\n[1] View Balance')
+        print('[2] Deposit')
+        print('[3] Withdraw')
+        print('[4] Exit')
         try:
-            print('\n[1] View Balance')
-            print('[2] Deposit')
-            print('[3] Withdraw')
-            print('[4] Exit')
-
             select = int(input('Select an option: '))
-            if select == 1:
+        except ValueError:
+            print('invalid input')
+            return
+        if select == 1:
+            try:
                 bal = BankAccount.view_balance(self)
                 print('\nCurrent Balance: $' + str(bal))
-            elif select == 2:
+            except BalanceRetrievalException:
+                print("Error getting balance")
+        elif select == 2:
+            try:
                 amount = float(input('Enter the deposit amount: '))
                 BankAccount.deposit(self, amount)
                 print('\nDeposit successful!')
-            elif select == 3:
+            except InternalDepositException:
+                print("Deposit error")
+        elif select == 3:
+            try:
                 amount = float(input('Enter the withdrawal amount: '))
                 BankAccount.withdraw(self, amount)
                 print('\nWithdrawal successful!')
-            elif select == 4:
-                BankAccount.leave(self)
-            else:
-                print('\nTransaction Error - 405')
-                BankAccount.transaction_options(self)
-            if 0 < select < 4:
-                BankAccount.transaction_options(self)
-        except:
-            raise Exception('Transaction Error - 402')
+            except WithdrawalException:
+                print('Withdraw error')
+        elif select == 4:
+            BankAccount.leave(self)
+            return
 
     def leave(self):
-        print('\nThank You')
-        quit()
+        # TODO implement function
+        """
+        print thank you and then leave the transaction loop (call quit())
+        """
+        pass
 
     def view_balance(self):
+        """
+        return the bank account's current balance without doing any transaction
+
+        Returns
+        -------
+        your account balance
+        """
         try:
             return self.balance
         except:
-            raise BalanceRetrievealException
+            raise BalanceRetrievalException
 
     def deposit(self, amount):
-        if amount > 0:
-            new_balance = (float(self.balance)) + amount
-            self.balance = new_balance
-            return self.balance
-        else:
-            raise InternalDepositException
+        # TODO implement function
+        """
+        This function should handle adding money to the bank.
+        It takes an amount (should be int or float) and will add that to the existing account balance.
+        If there is an error raise an InternalDepositException
+        Parameters
+        ----------
+        amount: float
+            Dollar amount depositing
+
+        Returns
+        -------
+        The bank account's total balance after deposit
+
+        Raises
+        ------
+        InternalDepositException
+            when amount is negative or NaN
+        """
+        pass
 
     def withdraw(self, amount):
-        if amount <= float(self.balance):
-            new_balance = (float(self.balance)) - amount
-            self.balance = new_balance
-            return self.balance
-        else:
-            raise WithdrawlException
+        # TODO implement function
+        """
+        This function handles taking money out of the bank.
+        It takes a numeric amount, and will remove that from the existing account balance if it is less than the balance.
+        If there is an error raise a WithdrawalException
+
+        Parameters
+        ----------
+        amount: float
+            Dollar amount withdrawing
+
+        Returns
+        -------
+        The bank account's total balance after withdraw
+
+        Raises
+        ------
+        WithdrawalException
+            When amount is negative, NaN or > the account balance
+        """
+        pass
+
+
+if __name__ == '__main__':
+    bank_account = BankAccount(username='name', balance=100)
+    while True:
+        bank_account.transaction_options()
