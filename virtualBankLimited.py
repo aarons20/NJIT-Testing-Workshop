@@ -70,11 +70,12 @@ class BankAccount:
             return
 
     def leave(self):
-        # TODO implement function
         """
         print thank you and then leave the transaction loop (call quit())
         """
-        pass
+        print('\nThank You')
+        quit()
+
 
     def view_balance(self):
         """
