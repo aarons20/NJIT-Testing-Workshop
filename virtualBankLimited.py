@@ -86,6 +86,8 @@ class BankAccount:
         your account balance
         """
         try:
+            if self.balance < 0:
+                raise BalanceRetrievalException
             return self.balance
         except:
             raise BalanceRetrievalException
