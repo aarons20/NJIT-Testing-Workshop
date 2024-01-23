@@ -3,6 +3,8 @@ from Exceptions import InternalDepositException, WithdrawalException, BalanceRet
 import pytest
 import coverage
 
+
 def test_view_balance_success():
-        bank_account = BankAccount(username= 'name', balance=100)
-        assert bank_account.view_balance() == 100
+    bank_account = BankAccount(username='name', balance=100)
+    actual_balance = bank_account.view_balance()
+    assert actual_balance == 100
