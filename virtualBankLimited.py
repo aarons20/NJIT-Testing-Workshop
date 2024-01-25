@@ -28,8 +28,6 @@ class BankAccount:
     withdraw()
         Remove funds from your bank account
     """
-    username = "username"
-    balance = 100.00
 
     def __init__(self, username, balance):
         self.username = username
