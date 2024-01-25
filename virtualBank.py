@@ -41,7 +41,6 @@ class BankAccount:
         self.balance = balance
 
     def transaction_options(self):
-        try:
             print('\n[1] View Balance')
             print('[2] Deposit')
             print('[3] Withdraw')
@@ -66,8 +65,6 @@ class BankAccount:
                 BankAccount.transaction_options(self)
             if 0 < select < 4:
                 BankAccount.transaction_options(self)
-        except:
-            raise Exception('Transaction Error - 402')
 
     def leave(self):
         print('\nThank You')
