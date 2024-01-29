@@ -32,6 +32,15 @@ CMD:
 pip install -U pytest
 ```
 
+### Running Tests with Pytest
+```
+python3 -m pytest
+```
+or
+```
+pytest
+```
+
 ### Installing Coverage
 
 The final item you'll need to install is [Python Coverage](https://coverage.readthedocs.io/en/7.3.2/). This package will be used to create the report that will be feed into sonarqube to analysis.
@@ -42,6 +51,11 @@ For more insturctions you can visit their site: https://coverage.readthedocs.io/
 CMD:
 ```
 python3 -m pip install coverage
+```
+
+### Running Coverage
+```
+python3 -m coverage run -m test_bank
 ```
 
 ### Workshop Instructions
