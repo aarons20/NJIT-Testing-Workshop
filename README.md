@@ -125,7 +125,7 @@ CMD:
 python3 -m pip install coverage
 ```
 
-### Running Coverage
+### Running Coverage 
 ```
 python3 -m coverage run -m test_bank
 ```
