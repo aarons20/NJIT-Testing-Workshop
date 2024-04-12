@@ -1,4 +1,8 @@
-from Exceptions import BalanceRetrievalException, InternalDepositException, WithdrawalException
+from Exceptions import (
+    BalanceRetrievalException,
+    InternalDepositException,
+    WithdrawalException,
+)
 
 
 class BankAccount:
@@ -34,35 +38,35 @@ class BankAccount:
         self.balance = balance
 
     def transaction_options(self):
-        print('\n[1] View Balance')
-        print('[2] Deposit')
-        print('[3] Withdraw')
-        print('[4] Exit')
+        print("\n[1] View Balance")
+        print("[2] Deposit")
+        print("[3] Withdraw")
+        print("[4] Exit")
         try:
-            select = int(input('Select an option: '))
+            select = int(input("Select an option: "))
         except ValueError:
-            print('invalid input')
+            print("invalid input")
             return
         if select == 1:
             try:
                 bal = BankAccount.view_balance(self)
-                print('\nCurrent Balance: $' + str(bal))
+                print("\nCurrent Balance: $" + str(bal))
             except BalanceRetrievalException:
                 print("Error getting balance")
         elif select == 2:
             try:
-                amount = float(input('Enter the deposit amount: '))
+                amount = float(input("Enter the deposit amount: "))
                 BankAccount.deposit(self, amount)
-                print('\nDeposit successful!')
+                print("\nDeposit successful!")
             except InternalDepositException:
                 print("Deposit error")
         elif select == 3:
             try:
-                amount = float(input('Enter the withdrawal amount: '))
+                amount = float(input("Enter the withdrawal amount: "))
                 BankAccount.withdraw(self, amount)
-                print('\nWithdrawal successful!')
+                print("\nWithdrawal successful!")
             except WithdrawalException:
-                print('Withdraw error')
+                print("Withdraw error")
         elif select == 4:
             BankAccount.leave(self)
             return
@@ -71,9 +75,8 @@ class BankAccount:
         """
         print thank you and then leave the transaction loop (call quit())
         """
-        print('\nThank You')
+        print("\nThank You")
         quit()
-
 
     def view_balance(self):
         """
@@ -90,8 +93,7 @@ class BankAccount:
         except:
             raise BalanceRetrievalException
 
-    def deposit(self, amount):
-        # TODO implement function
+    def deposit(self, amount: float) -> float:
         """
         This function should handle adding money to the bank.
         It takes an amount (should be int or float) and will add that to the existing account balance.
@@ -110,10 +112,21 @@ class BankAccount:
         InternalDepositException
             when amount is negative or NaN
         """
-        pass
+
+        if not isinstance(amount, (int, float)):
+            raise InternalDepositException(
+                "Invalid deposit amount. Amount must be a number."
+            )
+
+        if amount <= 0:
+            raise InternalDepositException(
+                "Invalid deposit amount. Amount must be a positive number."
+            )
+        self.balance += amount
+
+        return self.balance
 
     def withdraw(self, amount):
-        # TODO implement function
         """
         This function handles taking money out of the bank.
         It takes a numeric amount, and will remove that from the existing account balance if it is less than the balance.
@@ -133,10 +146,22 @@ class BankAccount:
         WithdrawalException
             When amount is negative, NaN or > the account balance
         """
-        pass
+
+        if not isinstance(amount, (int, float)) or isinstance(amount, bool):
+            raise WithdrawalException(
+            "Invalid withdrawal amount. Amount must be a number."
+            )
+
+        if amount <= 0:
+            raise WithdrawalException(
+                "Invalid withdrawal amount. Amount must be a positive number."
+            )
+        print(amount, type(amount))
+        self.balance -= amount
+        return self.balance
 
 
-if __name__ == '__main__':
-    bank_account = BankAccount(username='name', balance=100)
+if __name__ == "__main__":
+    bank_account = BankAccount(username="name", balance=100)
     while True:
         bank_account.transaction_options()
